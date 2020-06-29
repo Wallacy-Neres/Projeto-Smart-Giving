@@ -1,0 +1,187 @@
+<nav class="navbar navbar-expand-lg navbar-warning menu">
+    <div class="container">
+        <a class="navbar-brand h1 mb-0 " routerLink='/home'><img src="../../assets/logo-completa.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSite">
+            <span class="navbar-toggler-icon">
+                <fa-icon [icon]='faBars' class="fa mr-2"></fa-icon>
+            </span>
+        </button>
+        <div class="collapse navbar-collapse ml-5" id="navbarSite">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-light " routerLink='/faq'>Duvidas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light " routerLink='/contato'>Contato</a>
+                </li>
+
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item loginIn" *ngIf='!session()'>
+                    <a class="nav-link text-light loginButton" data-toggle="modal" data-target="#loginModal">Login</a>
+                </li>
+
+                <div class="dropdown loginOut" *ngIf='session()'>
+                    <button class="btn dropdown-toggle loginOutBtn" type="button" id="dropdownMenu2"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Conta
+                    </button>
+                    <div class="dropdown-menu loginOutBtn" aria-labelledby="dropdownMenu2">
+                        <button class="dropdown-item loginOutBtn" type="button" routerLink="/usuarios"
+                            *ngIf='perfil()'>Adm</button>
+                        <button class="dropdown-item loginOutBtn" type="button" routerLink="/feed">Feed</button>
+                        <button class="dropdown-item loginOutBtn" type="button" (click)="logout()">Sair</button>
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!--Modal Login-->
+<div class="modal fade" id="loginModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
+    aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-c-tabs d-flex justify-content-center tabsList">
+                <ul class="nav nav-tabs md-tabs tabs-2" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active text-body" data-toggle="tab" href="#panelLogin" role="tab">
+                            <fa-icon [icon]='faUser' class="fa mr-2"></fa-icon>Login
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-body" data-toggle="tab" href="#panelRegister" role="tab">
+                            <fa-icon [icon]='faUserPlus' class="fa mr-2"></fa-icon>Cadastrar
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="tab-content">
+                <!--Panel Login-->
+                <div class="tab-pane fade in show active" id="panelLogin" role="tabpanel">
+                    <div class="modal-body">
+                        <div class="row mt-4 logoLogin">
+                            <div class="col-md-12 logoLogin">
+                                <div class="card d-flex justify-content-center align-items-center logoLogin">
+                                    <div class="d-flex justify-content-center p-1 logoLogin">
+                                        <img src="../../assets/logo-completa.png"
+                                            class="card-img-top rounded-circle w-75" alt="...">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row mt-4">
+                                <div class="col-md-12">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="emailLogin">Endereço de email: </label>
+                                            <input type="email" class="form-control" id="emailLogin" name="email"
+                                                aria-describedby="emailHelp" placeholder="Seu email"
+                                                [(ngModel)]="usuarioLogin.email">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="passwordLogin">Senha: </label>
+                                            <input type="password" class="form-control" id="senhaLogin"
+                                                placeholder="Senha" name="senha" [(ngModel)]="usuarioLogin.senha">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="text-info d-flex justify-content-end linkTransfer"><a
+                                            routerLink='/redefinir' class="text-info ml-1">Esqueceu sua senha?</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="submit" class="btn btn-outline-primary" (click)='login()'>Login</button>
+                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+                <!--Panel Register-->
+                <div class="tab-pane fade" id="panelRegister" role="tabpanel">
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card d-flex justify-content-center align-items-center">
+                                        <div class="d-flex justify-content-center p-1">
+                                            <img src="https://i.imgur.com/PO8Lfao.png"
+                                                class="card-img-top rounded-circle w-75" alt="...">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-md-12">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="nameRegister">Nome: </label>
+                                            <input type="text" class="form-control" id="nomeRegister" name="nome"
+                                                placeholder="Nome" [(ngModel)]="usuario.nome">
+                                            <div style="visibility: hidden" class="alert alert-danger"
+                                                role="alert-email" id="alert-nome"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="emailRegister">Endereço de email: </label>
+                                            <input type="email" class="form-control" id="emailRegister" name="email"
+                                                placeholder="Seu email" [(ngModel)]="usuario.email">
+                                            <small id="emailHelp" class="form-text text-muted">Nunca vamos
+                                                compartilhar seu email, com ninguém.</small>
+                                            <div style="visibility: hidden" class="alert alert-danger"
+                                                role="alert-email" id="alert-email">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="nameRegister">Sexo: </label>
+                                            <select class="custom-select" id="inputGroupSelect01" name="sexo"
+                                                [(ngModel)]="usuario.sexo">
+                                                <option selected disabled>Escolha</option>
+                                                <option value="M">Masculino</option>
+                                                <option value="F">Feminino</option>
+                                            </select>
+                                            <div style="visibility: hidden" class="alert alert-danger"
+                                                role="alert-email" id="alert-nome"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="nameRegister">Data de Nascimento: </label>
+                                            <input type="date" class="form-control" id="dataRegister" name="data"
+                                                placeholder="Nome" [(ngModel)]="usuario.data">
+                                            <div style="visibility: hidden" class="alert alert-danger"
+                                                role="alert-email" id="alert-nome"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="passwordRegister">Senha: </label>
+                                            <input type="password" class="form-control" id="senhaRegister" name='senha'
+                                                placeholder="Senha">
+                                            <div style="visibility: hidden" class="alert alert-danger"
+                                                role="alert-email" id="alert-senha">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="passwordRegister2">Confirmar Senha: </label>
+                                            <input type="password" class="form-control" id="confirmaSenhaRegister"
+                                                name="senha" placeholder="Senha" [(ngModel)]="usuario.senha">
+                                            <div style="visibility: hidden" class="alert alert-danger"
+                                                role="alert-email" id="alert-confirmaSenha"></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="submit" class="btn btn-outline-primary" (click)="cadastrar()">Cadastrar</button>
+                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

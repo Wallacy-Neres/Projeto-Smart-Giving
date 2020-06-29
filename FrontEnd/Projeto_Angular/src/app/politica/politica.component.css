@@ -1,0 +1,99 @@
+#introducao {
+    background-color: #183059;
+    color: #fff;
+}
+#introducao h1 {
+    font-size: 70px;
+    padding-top: 25px;
+}
+#introducao p {
+    text-align: left;
+    max-width: 700px;
+    margin-left: 200px;
+    font-size: 32px;
+    line-height: 3rem;
+}
+
+.azul-claro{
+    color: #276fbf;
+}
+
+@media screen and (min-width:1000px) and (max-width:1199px) {
+    #introducao p {
+        margin-left: 130px;
+    }
+}
+
+@media screen and (min-width:800px) and (max-width:999px) {
+    #introducao h1 {
+      font-size: 65px;
+    } 
+    #introducao p {
+        margin-left: 60px;
+        font-size: 27px;
+        line-height: 2rem;
+    }
+
+    @media screen and (min-width:992px) {
+        #introducao p {
+            margin-left: 100px;
+        }
+    }
+}
+
+@media screen and (min-width:600px) and (max-width:799px) {
+    #introducao h1 {
+        font-size: 50px;
+    } 
+    #introducao p {
+        margin-left: 40px;
+        font-size: 25px;
+        line-height: 1.5;
+    }
+
+    .menu {
+        margin-right: 100px;
+        margin-bottom: 25px;
+        margin-left: 40px;
+    }
+
+    @media screen and (min-width:768px) {
+
+        .menu{
+            margin-right: 0px;
+            margin-left: 0px;
+        }
+    }
+}
+
+@media screen and (max-width:599px) {
+    #introducao h1 {
+        font-size: 35px;
+    }
+    #introducao p {
+        margin-left: 24px ;
+        font-size: 15px ;
+        line-height: 1.5rem;
+        margin-right: 30px;
+    }
+
+    .menu {
+        margin-left: 24px;
+        margin-right: 30px;
+        margin-bottom: 20px;
+    }
+    .bloco-do-menu {
+        margin-right: 30px;
+    }
+    .titulo-do-menu {
+        margin-left: 10px;
+        font-size: 20px;
+    }
+    .texto-do-menu {
+        margin-left: 24px;
+        font-size: 15px;
+    }
+}
+
+
+

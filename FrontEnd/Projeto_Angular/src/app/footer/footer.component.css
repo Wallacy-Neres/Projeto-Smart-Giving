@@ -1,0 +1,54 @@
+footer{
+    width: 100%;
+    background-color: #183059; 
+    padding: 20px 8%; 
+    margin-top: 30px;
+    color: white;
+}
+
+footer img {
+    width: 156px;
+    height: 52.6px;
+}
+
+.social-icons {
+    margin: auto 0;
+}
+
+.social-icons a {
+    color: #fff;
+    margin-left: 12px;
+    font-size: 1.5em;
+}
+
+.btn-facebook:hover {
+    color:#3B5998;
+}
+
+.btn-twitter:hover {
+    color:#54A4D6;
+}
+
+.btn-google:hover {
+    color: #D73D32;
+}
+
+.copyrights_footer {
+    background-color: #183059;
+    color: white;
+}
+
+@media screen and (max-width: 621px){
+    footer {
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    footer div {
+        margin-top: 1em;
+    }
+
+    .politica {
+        margin-top: 1em;
+    }
+}

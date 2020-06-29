@@ -1,0 +1,84 @@
+
+#senha .container{
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+ 
+}
+.btn-button {
+  color: #ffffff;
+  font-weight: bolder;
+  background-color: #183059;    
+}
+
+.btn-button:hover {
+  color: #183059;
+  font-weight: bolder;
+  background-color: #ffffff; 
+  border-color: #183059;
+}
+
+.doacao {
+  background-color: #183059; 
+  color: #ffffff;
+  margin: 0 auto 70px;
+  width: 90%;
+  max-width: 500px;
+}
+
+.btn-doar {
+  color: #183059;
+  font-weight: bolder;
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+
+.btn-doar:hover {
+  color: #ffffff;
+  font-weight: bolder;
+  background-color: #183059;
+  border-color: #ffffff;
+}
+#senha img{
+  margin: 0 20px 0 0;
+  max-width: 500px;
+  height: 600px;
+}
+
+#senha h1{
+  margin: 100px 0 0 50px;
+}
+
+
+@media screen and (max-width:1187px) {
+  #senha .container{
+      
+      display: grid;
+      grid-template-columns: 1fr;   
+  } 
+}
+
+
+@media screen and (max-width: 425px){
+ 
+  #senha img{
+      width: 400px;
+      height: 400px;
+  }
+
+  #senha h1{
+      margin: 30px 0 30px 0;
+  }
+}
+
+
+@media screen and (max-width: 375px){
+
+  #senha .container{
+      margin: 0;
+  }
+  #senha img{
+      width: 300px;
+      height: 300px;
+  }   
+}

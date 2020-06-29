@@ -1,0 +1,57 @@
+<main>
+    <section>
+        <div>
+            <h2 class="text-center mt-5">Entre em contato</h2>
+        </div>
+
+        <div id="contato">
+            <form class="formulario">
+                <div class="form-group">
+                    <fa-icon [icon]='faUserCircle' class="fa mr-2"></fa-icon><label
+                        for="nomeContato">Nome<span>*</span></label>
+                    <input type="text" class="form-control" id="nomeContato" placeholder="Digite seu nome">
+                    <div style="visibility: hidden" class="alert alert-danger" role="alert-email" id="alert-name">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <fa-icon [icon]='faEnvelopeSquare' class="fa mr-2"></fa-icon><label
+                        for="emailContato">Email<span>*</span></label>
+                    <input type="text" class="form-control" id="emailContato" aria-describedby="emailHelp"
+                        placeholder="Digite seu Email">
+                    <small id="emailHelp" class="form-text text-muted">Nós não iremos compartilhar o seu
+                        email com
+                        ninguém</small>
+                    <div style="visibility: hidden" class="alert alert-danger" role="alert-email" id="alert-email">
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <fa-icon [icon]='faPhoneSquareAlt' class="fa mr-2"></fa-icon><label
+                        for="telContato">Telefone</label>
+                    <input type="text" class="form-control" id="telContato" placeholder="Digite seu telefone">
+                    <div style="visibility: hidden" class="alert alert-danger" role="alert-email" id="alert-telefone">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="msgContato">Digite sua mensagem no campo
+                        abaixo<span>*</span></label>
+                    <textarea class="form-control" id="msgContato" rows="5"></textarea>
+                    <div style="visibility: hidden" class="alert alert-danger" role="alert-email" id="alert-mensagem">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-enviar" id="enviar" (click)='enviar()'>Enviar</button>
+
+            </form>
+            <div class="mapa">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.1241452609834!2d-46.69399738502288!3d-23.528036884699503!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cef8775663b04f%3A0x923835e9005f8309!2sSenac%20Lapa%20Tito!5e0!3m2!1spt-BR!2sbr!4v1583944082549!5m2!1spt-BR!2sbr"
+                    width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
+                    tabindex="0"></iframe>
+            </div>
+        </div>
+    </section>
+</main>

@@ -1,0 +1,90 @@
+<body>
+
+
+  <div class="container mt-5">
+    <h2 class="text-center">A sua doação importa</h2>
+
+    <div class="d-flex justify-content-center mt-5">
+      <button class="btn btn-button" type="button" data-toggle="collapse" data-target="#collapseExample"
+        aria-expanded="false" aria-controls="collapseExample">
+        Quero Ajudar
+      </button>
+    </div>
+
+    <div class="collapse mt-4" id="collapseExample">
+      <div class="card card-body doacao">
+        <div class="form-group">
+          <label for="nome">Nome</label>
+          <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Informe o seu nome"
+            [(ngModel)]="usuario.nome" name="nome">
+        </div>
+        <div class="form-group">
+          <label for="localizacao">Local da doação</label>
+          <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Informe o local da doação"
+            [(ngModel)]="doacao.endereco" name="endereco">
+        </div>
+        <label>Numero de peças</label>
+        <div class="input-group mb-3">
+          <select class="custom-select" id="inputGroupSelect02" [(ngModel)]="doacao.doado" name="doado">
+            <option selected disabled>Escolher...</option>
+            <option value="1">Um</option>
+            <option value="2">Dois</option>
+            <option value="3">Três</option>
+          </select>
+        </div>
+        <div class="d-flex justify-content-center">
+          <button class="btn btn-doar w-25" (click)="doar()">DOAR</button>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <div class="gallery-section">
+    <div class="inner-width">
+      <h1>Doações</h1>
+      <div class="border"></div>
+      <div class="gallery">
+
+        <a href="#" class="image">
+          <img src="../../assets/1.png" alt="">
+        </a>
+
+        <a href="#" class="image">
+          <img src="../../assets/2.png" alt="">
+        </a>
+
+        <a href="#" class="image">
+          <img src="../../assets/3.png" alt="">
+        </a>
+
+        <a href="#" class="image">
+          <img src="../../assets/4.png" alt="">
+        </a>
+
+        <a href="#" class="image">
+          <img src="../../assets/5.png" alt="">
+        </a>
+
+        <a href="#" class="image">
+          <img src="../../assets/6.png" alt="">
+        </a>
+
+        <a href="#" class="image">
+          <img src="../../assets/7.png" alt="">
+        </a>
+
+        <a href="#" class="image">
+          <img src="../../assets/8.png" alt="">
+        </a>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center mb-5 mt-5">
+    <button class="btn btn-button" routerLink='/feed'>FEED</button>
+  </div>
+  <!--  -->
+
+</body>

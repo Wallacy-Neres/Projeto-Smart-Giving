@@ -1,0 +1,133 @@
+.tituloTab {
+    font-size: 1.3em;
+}
+
+.tableColor {
+    background-color: #183059;
+    color: #ffffff;
+}
+
+.tbodyColor {
+    background-color: #e9ecef;
+}
+
+.btn-button-sucesso {
+    color: #ffffff;
+    font-weight: bolder;
+    background-color: #05b11c;    
+  }
+  
+.btn-button-sucesso:hover {
+    color: #05b11c;
+    font-weight: bolder;
+    background-color: #ffffff; 
+    border-color: #05b11c;
+}
+
+.btn-button-editar {
+    color: #ffffff;
+    font-weight: bolder;
+    background-color: #ffc107;    
+  }
+  
+.btn-button-editar:hover {
+    color: #ffc107;
+    font-weight: bolder;
+    background-color: #ffffff; 
+    border-color: #ffc107;
+}
+.btn-button-excluir {
+    color: #ffffff;
+    font-weight: bolder;
+    background-color: #dc3545;    
+  }
+  
+.btn-button-excluir:hover {
+    color: #dc3545;
+    font-weight: bolder;
+    background-color: #ffffff; 
+    border-color: #dc3545;
+}
+.btn-button-cancelar {
+    color: #ffffff;
+    font-weight: bolder;
+    background-color: #6c757d;    
+  }
+  
+.btn-button-cancelar:hover {
+    color: #6c757d;
+    font-weight: bolder;
+    background-color: #ffffff; 
+    border-color: #6c757d;
+}
+
+@media screen and (max-width:991px) {
+    .botao-de-funcao{
+        margin-top: 5px
+    }
+}
+
+@media screen and (min-width:531px) and (max-width:800px) {
+    .table th {
+        font-size: 14px;
+    }
+    .table td {
+        font-size: 13px;
+    }
+
+    .table td a, button {
+        padding: .25rem .5rem;
+        font-size: .875rem;
+        line-height: 1.5;
+        border-radius: .2rem;
+    }
+}
+
+@media screen and (min-width:451px) and (max-width:530px) {
+    .tituloPagina {
+        font-size: 1.3em;
+    }
+
+    .tituloTab {
+        font-size: 1em;
+    }
+
+    .table th {
+        font-size: 11px;
+    }
+    .table td {
+        font-size: 10px;
+    }
+
+    .table td a, button {
+        padding: .20rem .3rem;
+        font-size: 0.700rem;
+        line-height: 1.5;
+        border-radius: .2rem;
+    }
+}
+
+@media screen and (max-width:450px) {
+    .tituloPagina {
+        font-size: 1.3em;
+    }
+    
+    .tituloTab {
+        font-size: 1em;
+    }
+    
+    .table th {
+        font-size: 10px;
+    }
+    
+    .table td {
+        font-size: 9px;
+    }
+
+    .table td a, button {
+        padding: .15rem .2rem;
+        font-size: 0.500rem;
+        line-height: 1.5;
+        border-radius: .2rem;
+    }
+}
