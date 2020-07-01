@@ -1,0 +1,88 @@
+<body class="profile-page">
+    <div class="page-header header-filter"></div>
+    <div class="main main-raised">
+        <div class="profile-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 ml-auto mr-auto">
+                        <div class="profile">
+                            <div class="avatar">
+                                <img src="../../assets/bg.jpeg" alt="Circle Image"
+                                    class="img-raised rounded-circle img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 mb-5">
+                            <div class="card border-0 bg-light" style="max-width: 18rem;">
+                                <div class="card-body">
+                                    <h2 class="card-title text-center font-weight-bolder">{{usuario.nome}}</h2>
+                                    <a class="btn btn-editar d-flex justify-content-center mb-3"
+                                        [routerLink]="['/profile', usuario.codigo]">PERFIL</a>
+                                    <a class=" btn btn-button d-flex justify-content-center"
+                                        [routerLink]="['/doacao', usuario.codigo]">DOAÇÃO</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8 mb-5">
+                            <div>
+                                <h3 class="text-center mb-4">No que está pensando?</h3>
+
+                                <div class="form-group">
+                                    <textarea name="texto" id="texto" cols="30" rows="4" class="form-control"
+                                        placeholder="Informe seu texto" [(ngModel)]="postagem.texto"></textarea>
+                                </div>
+
+                                <div class="d-flex justify-content-end">
+                                    <button type="button" class="btn btn-button w-20"
+                                        (click)="publicar()">PUBLICAR</button>
+                                </div>
+
+                            </div>
+
+                            <hr class="mt-5 mb-5">
+
+                            <h3 class="text-center mb-5">Meus Posts</h3>
+
+                            <div class="card mb-4" *ngFor="let post of listaPostagens | orderBy : key : reverse">
+                                <div class="card mb-4">
+                                    <div class="card-header bg-white">
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <div class="row">
+                                                    <img src="../../assets/bg.jpeg" alt="Circle Image"
+                                                        class="ml-2 rounded img-size">
+                                                    <h6 class="font-weight-bolder ml-2">{{post.usuario.nome}}</h6>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 d-flex justify-content-end"
+                                                *ngIf="usuario.codigo == post.usuario.codigo">
+                                                <button class="btn btn-editar" [routerLink]="['/editar', post.codigo]">
+                                                    EDITAR</button>
+                                                <button class="btn btn-excluir ml-2"
+                                                    [routerLink]="['/editar', post.codigo]">
+                                                    EXCLUIR</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card-body">
+                                        <p class="card-text">{{ post.texto }}</p>
+                                        <small class="form-text m-0 text-muted mb-3">
+                                            Postado em {{ post.data | date: 'dd/MM/yyyy' }}
+                                            às {{ post.data | date: 'HH:mm' }}
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

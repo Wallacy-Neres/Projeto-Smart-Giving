@@ -1,0 +1,274 @@
+<div class="container">
+
+    <div class="d-flex align-items-center">
+        <h4 class="p-5 tituloPagina">Listagem de {{tab}}</h4>
+        <button class="btn btn-button-sucesso" *ngIf="tab === 'Endereços'" data-toggle="modal"
+            data-target="#novoEnde">Novo</button>
+    </div>
+
+    <div class="alert alert-success" role="alert" *ngIf='delOk == "true"'>
+        {{delOkMessage}}
+    </div>
+
+    <div class="alert alert-danger" role="alert" *ngIf='delFail == "true"'>
+        {{delOkMessage}}
+    </div>
+
+    <nav class="row d-flex justify-content-center">
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-user-tab" data-toggle="tab" href="#nav-user" role="tab"
+                aria-controls="nav-user" aria-selected="true" (click)='mudarTab("Usuários")'>
+                <h4 class="tituloTab">Usuários</h4>
+            </a>
+            <a class="nav-item nav-link" id="nav-endereco-tab" data-toggle="tab" href="#nav-endereco" role="tab"
+                aria-controls="nav-endereco" aria-selected="false" (click)='mudarTab("Endereços")'>
+                <h4 class="tituloTab">Endereços</h4>
+            </a>
+            <a class="nav-item nav-link" id="nav-doacao-tab" data-toggle="tab" href="#nav-doacao" role="tab"
+                aria-controls="nav-doacao" aria-selected="false" (click)='mudarTab("Cupons de Desconto")'>
+                <h4 class="tituloTab">Cupons</h4>
+            </a>
+        </div>
+    </nav>
+
+    <div class="tab-content panelAdmTab" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-user" role="tabpanel" aria-labelledby="nav-user-tab">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">Código</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">E-mail</th>
+                            <th scope="col">Senha</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let usuario of usuarios">
+                            <td scope="row">{{usuario.codigo}}</td>
+                            <td>{{usuario.nome}}</td>
+                            <td>{{usuario.email}}</td>
+                            <td>{{esconderSenha(usuario.senha)}}</td>
+                            <td><a class="btn btn-button-editar mr-2" [routerLink]="['/profile', usuario.codigo]">
+                                    Editar
+                                </a>
+                                <button class="btn btn-button-excluir botao-de-funcao" data-toggle="modal"
+                                    data-target="#delProfile" (click)="btnDel(usuario)">
+                                    Excluir
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="nav-endereco" role="tabpanel" aria-labelledby="nav-endereco-tab">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">Código</th>
+                            <th scope="col">Parceiro</th>
+                            <th scope="col">Endereço</th>
+                            <th scope="col">Total Doado</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let endereco of enderecos">
+                            <th scope="row">{{endereco.codigo}}</th>
+                            <td>{{endereco.parceiro}}</td>
+                            <td>{{endereco.endereco}}</td>
+                            <td>{{endereco.totalDoado}}</td>
+                            <td>
+                                <button class="btn btn-button-editar" (click)="btnEndereco(endereco)"
+                                    data-toggle="modal" data-target="#editEnde">
+                                    Editar</button></td>
+                            <td>
+                                <button class="btn btn-button-excluir" (click)="btnEndereco(endereco)"
+                                    data-toggle="modal" data-target="#delEndereco">
+                                    Excluir</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="nav-doacao" role="tabpanel" aria-labelledby="nav-doacao-tab">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">Código</th>
+                            <th scope="col">Endereço</th>
+                            <th scope="col">Data de Doação</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let doacao of doacoes">
+                            <th scope="row">{{doacao.codigo}}</th>
+                            <td>{{doacao.endereco}}</td>
+                            <td>{{doacao.data | date: 'dd/MM/yyyy'}}</td>
+                            <td>{{doacao.cupom == 'true' ? 'Usado' : 'Não Usado'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="modal fade" id="delProfile" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="titleModal">Deseja excluir sua conta?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">E-mail</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td scope="row">{{usuario.nome}}</td>
+                                    <td>{{usuario.email}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-button-cancelar" data-dismiss="modal">Ainda não</button>
+                        <button type="button" class="btn btn-button-excluir" data-dismiss="modal"
+                            (click)="btnSimUsuario()">Quero
+                            Deletar!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="delEndereco" data-backdrop="static" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="titleModal">Deseja excluir o endereço?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">Parceiro</th>
+                                    <th scope="col">Endereço</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td scope="row">{{enderecoEdit.parceiro}}</td>
+                                    <td>{{enderecoEdit.endereco}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-button-cancelar" data-dismiss="modal">Ainda não</button>
+                        <button type="button" class="btn btn-button-excluir" data-dismiss="modal"
+                            (click)="btnSimEndereco()">Quero Deletar!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="novoEnde" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="titleModal">Adicionar novo endereço</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label for="nomeParceiro">Parceiro: </label>
+                                    <select class="custom-select" id="idUsuarioEndereco">
+                                        <option value={{usuario.codigo}} *ngFor="let usuario of usuarios">
+                                            {{usuario.nome}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="enderecoParceiro">Endereço: </label>
+                                <input type="text" class="form-control" id="enderecoParceiro" name="endereco"
+                                    placeholder="Endereço" [(ngModel)]="endereco.endereco">
+                            </div>
+                            <div class="form-group">
+                                <label for="totalDoadoParceiro">Total Doado: </label>
+                                <input type="text" class="form-control" id="totalDoadoParceiro" name="totalDoado"
+                                    placeholder="Total Doado" [(ngModel)]="endereco.totalDoado">
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-button-cancelar" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-button-sucesso" data-dismiss="modal"
+                            (click)="btnNovoEndereco()">Cadastrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="editEnde" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="titleModal">Editar endereço</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label for="nomeParceiro">Parceiro: </label>
+                                    <select class="custom-select" id="inputGroupSelect03">
+                                        <option value={{usuario.codigo}} *ngFor="let usuario of usuarios">
+                                            {{usuario.nome}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="enderecoParceiro">Endereço: </label>
+                                <input type="text" class="form-control" id="enderecoParceiro2" name="endereco"
+                                    placeholder="Endereço" [(ngModel)]="enderecoEdit.endereco">
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-button-cancelar" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-button-sucesso" data-dismiss="modal"
+                            (click)="btnAtualizarEndereco()">Atualizar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

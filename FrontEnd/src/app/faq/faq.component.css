@@ -1,0 +1,66 @@
+.titulo {
+    background-color: #183059;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.titulo-principal {
+    color: #ffffff;   
+}
+
+.titulo-secundario {
+    color: #54A4D6;
+}
+
+.collapse-backgroundColor {
+    background-color: #183059;   
+    font-weight: bolder;
+}
+
+.color-link {
+    color: #ffffff;
+    font-weight: bolder;    
+}
+
+.btnHome {
+    background-color: #183059;
+    color: #ffffff;
+    font-weight: bolder;
+}
+
+.btnHome:hover {
+    background-color: #ffffff;
+    color: #183059;
+    font-weight: bolder;
+    border-color: #183059;
+}
+
+@media screen and (max-width: 414px) {
+    .titulo-principal {
+        font-size: 39px;
+    }
+}
+
+@media screen and (max-width: 411px) {
+    .titulo-principal {
+        font-size: 38px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .titulo-principal {
+        font-size: 35px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .titulo-principal {
+        font-size: 33px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .titulo-principal {
+        font-size: 29px;
+    }
+}

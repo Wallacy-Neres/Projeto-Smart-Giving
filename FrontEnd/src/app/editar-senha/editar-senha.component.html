@@ -1,0 +1,32 @@
+<section id="senha" class="mt-5">
+  <div class="container">
+    <div>
+      <h1>Ops! Esqueceu sua senha?</h1>
+
+      <div class="d-flex justify-content-center mt-5">
+        <button class="btn btn-button" type="button" data-toggle="collapse" data-target="#collapseExample"
+          aria-expanded="false" aria-controls="collapseExample">
+          Redefinir senha
+        </button>
+      </div>
+
+      <div class="collapse mt-4" id="collapseExample">
+        <div class="card card-body doacao">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Informe o seu email" name="email"
+              [(ngModel)]="usuario.email">
+          </div>
+          <div class="d-flex justify-content-center">
+            <button class="btn btn-doar w-25" (click)="editarSenha()">Redefinir</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <img src="../../assets/bag.png" alt="">
+    </div>
+
+  </div>
+</section>

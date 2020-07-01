@@ -1,0 +1,163 @@
+<main class="d-flex justify-content-center">
+    <div class="d-flex flex-column perfil">
+        <img src="../../assets/avatar.png" alt="Imagem Pessoal" class="img-thumbnail">
+        <div class="btn-group-vertical">
+            <a class="btn btn-deletar d-flex justify-content-center mb-2" data-toggle="modal"
+                data-target="#delProfile">Deletar Conta</a>
+            <a class=" btn btn-voltar d-flex justify-content-center" routerLink="/feed">Voltar</a>
+        </div>
+    </div>
+
+    <div class="modal fade" id="delProfile" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="titleModal">Deseja excluir sua conta?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">E-mail</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row">{{usuario.nome}}</td>
+                                <td>{{usuario.email}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Ainda não</button>
+                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal" (click)="btnSim()">Quero
+                        Deletar!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="dadosPessoais">
+        <h1 class="text-center">Dados Pessoais</h1>
+        <form class="mt-4">
+            <fieldset disabled class="dP1" id="dP1">
+                <div class="dados">
+                    <div class="form-group row">
+                        <label for="nomePerfil" class="col-sm-2 col-form-label">Nome</label>
+                        <div class="col-sm-10">
+                            <input type="text" [(ngModel)]="usuario.nome" class="form-control" id="nomePerfil"
+                                name="nome">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="emailPerfil" class="col-sm-2 col-form-label">E-mail</label>
+                        <div class="col-sm-10">
+                            <input type="email" [(ngModel)]="usuario.email" class="form-control" id="emailPerfil"
+                                name="email">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="senhaPerfil" class="col-sm-2 col-form-label">Senha</label>
+                        <div class="col-sm-10">
+                            <input type="password" [(ngModel)]="usuario.senha" class="form-control" id="senhaPerfil"
+                                name="senha">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="sexPerfil" class="col-sm-2 col-form-label">Sexo</label>
+                        <div class="col-sm-10">
+                            <select class="custom-select" id="sexPerfil" name="sexo" [(ngModel)]="usuario.sexo">
+                                <option value="M">Masculino</option>
+                                <option value="F">Feminino</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="dataPerfil" class="col-sm-2 col-form-label duasLinhas">Data de
+                            Nascimento</label>
+                        <div class="col-sm-10">
+                            <input type="date" date="yyyy-MM-dd" [(ngModel)]='usuario.data' class="form-control"
+                                id="dataPerfil" name="data">
+                        </div>
+                    </div>
+                    <div class="form-group row" *ngIf='perfil()'>
+                        <label for="sexPerfil" class="col-sm-2 col-form-label">Credenciais</label>
+                        <div class="col-sm-10">
+                            <select class="custom-select" id="perfilPerfil" name="perfil" [(ngModel)]="usuario.perfil">
+                                <option value="user">Usuário</option>
+                                <option value="adm">Administrador</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset disabled class="dP2" id="dP2">
+                <div class="dados">
+                    <div class="form-group row">
+                        <label for="nomePerfil" class="col-sm-12 col-form-label titlesPerfil">Nome</label>
+                    </div>
+                    <div class="form-group row">
+                        <input type="text" [(ngModel)]="usuario.nome" class="form-control" id="nomePerfil2" name="nome">
+                    </div>
+                    <div class="form-group row">
+                        <label for="emailPerfil" class="col-sm-12 col-form-label titlesPerfil">E-mail</label>
+                    </div>
+                    <div class="form-group row">
+                        <input type="email" [(ngModel)]="usuario.email" class="form-control" id="emailPerfil2"
+                            name="email">
+                    </div>
+                    <div class="form-group row">
+                        <label for="telPerfil" class="col-sm-12 col-form-label titlesPerfil">Senha</label>
+                    </div>
+                    <div class="form-group row">
+                        <input type="password" [(ngModel)]="usuario.senha" class="form-control" id="senhaPerfil2"
+                            name="senha">
+                    </div>
+                    <div class="form-group row">
+                        <label for="sexPerfil2" class="col-sm-12 col-form-label titlesPerfil">Sexo</label>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <select class="custom-select teste" id="sexPerfil2" name="sexo" [(ngModel)]="usuario.sexo">
+                                <option value="M">Masculino</option>
+                                <option value="F">Feminino</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="dataPerfil" class="col-sm-12 col-form-label titlesPerfil">Data de
+                            Nascimento</label>
+                    </div>
+                    <div class="form-group row">
+                        <input type="date" date="dd-MM-yyyy" [(ngModel)]='usuario.data' class="form-control mb-3"
+                            id="dataPerfil2" name="data">
+                    </div>
+                    <div class="form-group row" *ngIf='perfil()'>
+                        <label for="perfilPerfil2" class="col-sm-12 col-form-label titlesPerfil">Perfil do
+                            Usuário</label>
+                    </div>
+                    <div class="form-group row" *ngIf='perfil()'>
+                        <div class="col-sm-12">
+                            <select class="custom-select" id="perfilPerfil2" name="perfil" [(ngModel)]="usuario.perfil">
+                                <option value="user">Usuário</option>
+                                <option value="adm">Administrador</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="form-group row buttons mt-4">
+                <div class="col-sm-12 d-flex justify-content-end">
+                    <button type="button" class="btn btn-primary" id="edit" (click)='editar()'>Editar</button>
+                    <button disabled type="submit" class="btn btn-primary" id="save" (click)='salvar()'>Salvar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>

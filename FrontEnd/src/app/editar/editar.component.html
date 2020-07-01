@@ -1,0 +1,103 @@
+<body class="profile-page">
+
+    <div class="page-header header-filter"></div>
+    <div class="main main-raised">
+        <div class="profile-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 ml-auto mr-auto">
+                        <div class="profile">
+                            <div class="avatar">
+                                <img src="../../assets/bg.jpeg" alt="Circle Image"
+                                    class="img-raised rounded-circle img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container">
+
+                    <div class="row">
+
+                        <div class="col-md-4 mb-5">
+                            <div class="card border-0 bg-light" style="max-width: 18rem;">
+                                <div class="card-body">
+                                    <h2 class="card-title text-center font-weight-bolder">{{postagem.usuario.nome}}</h2>
+                                    <a class="btn btn-excluir d-flex justify-content-center mb-2" data-toggle="modal"
+                                        data-target="#deletePostagem">EXCLUIR</a>
+                                    <a class="btn btn-voltar d-flex justify-content-center mb-2"
+                                        routerLink='/feed'>VOLTAR</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-8 mb-5">
+
+                            <div>
+                                <h2 class="text-center mb-4 font-weight-bolder">Edição de Postagem</h2>
+
+                                <div class="form-group">
+                                    <textarea name="texto" id="texto" cols="30" rows="4" class="form-control"
+                                        placeholder="Informe seu texto" [(ngModel)]="postagem.texto"></textarea>
+                                </div>
+
+                                <div class="d-flex justify-content-end">
+                                    <button type="button" class="btn btn-salvar w-25" (click)="salvar()">SALVAR</button>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deletePostagem" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="titleModal">Deseja excluir essa postagem?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-header bg-white">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <img src="../../assets/avatar.png" alt="Circle Image"
+                                            class="ml-2 rounded img-size">
+                                        <h6 class="font-weight-bolder ml-2">{{postagem.usuario.nome}}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <p class="card-text">{{ postagem.texto }}</p>
+                            <small class="form-text m-0 text-muted mb-3">
+                                Postado em {{ postagem.data | date: 'dd/MM/yyyy' }}
+                                às {{ postagem.data | date: 'HH:mm' }}
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-editar" data-dismiss="modal">NÃO</button>
+                    <button type="button" class="btn btn-excluir" data-dismiss="modal"
+                        (click)="btnSim()">EXCLUIR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
